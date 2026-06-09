@@ -28,13 +28,23 @@ public class Show {
     }
 
     public void substituteActor(Actor actor, String surname) {
-        for (int i = 0; i < listOfActors.size(); i++){
+        int index = 0;
+        int numbOfNamesakes = 0;
+        for (int i = 0; i < listOfActors.size(); i++) {
             if (listOfActors.get(i).getSurname().equals(surname)) {
-                listOfActors.remove(i);
-                listOfActors.add(actor);
-                return;
+                index = i;
+                numbOfNamesakes++;
+                if (numbOfNamesakes > 1) break;
             }
         }
-        System.out.println("Не найден артист для замены!");
+        if (numbOfNamesakes == 1) {
+            listOfActors.remove(index);
+            listOfActors.add(actor);
+            System.out.println("Артист успешно заменён!");
+        } else if (numbOfNamesakes > 1) {
+            System.out.println("В списке актеров есть однофамильцы, замена не возможна!");
+        } else {
+            System.out.println("Не найден артист для замены!");
+        }
     }
 }

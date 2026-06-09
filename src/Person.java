@@ -16,6 +16,15 @@ public class Person {
     }
 
     @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", gender=" + gender +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
@@ -26,5 +35,4 @@ public class Person {
     public int hashCode() {
         return Objects.hash(name, surname, gender);
     }
-
 }
